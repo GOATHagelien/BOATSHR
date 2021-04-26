@@ -91,6 +91,19 @@ public class Boat {
     }
 
     @Override
+    public String toString() {
+        return "Boat{" +
+                "id=" + id +
+                ", typeBoat='" + typeBoat + '\'' +
+                ", size=" + size +
+                ", maxCapacity=" + maxCapacity +
+                ", engineType='" + engineType + '\'' +
+                ", engineFuel='" + engineFuel + '\'' +
+                ", boatParking=" + boatParking +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

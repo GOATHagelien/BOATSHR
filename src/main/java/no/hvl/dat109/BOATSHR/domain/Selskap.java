@@ -58,6 +58,16 @@ public class Selskap {
     }
 
     @Override
+    public String toString() {
+        return "Selskap{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", nmr=" + nmr +
+                ", boatParking=" + boatParking +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

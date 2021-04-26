@@ -86,6 +86,19 @@ public class BoatParking {
     }
 
     @Override
+    public String toString() {
+        return "BoatParking{" +
+                "id=" + id +
+                ", locationName='" + locationName + '\'' +
+                ", locationAddress='" + locationAddress + '\'' +
+                ", locationGps=" + locationGps +
+                ", availableParking=" + availableParking +
+                ", selskaper=" + selskaper +
+                ", boats=" + boats +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
