@@ -1,6 +1,7 @@
 package no.hvl.dat109.BOATSHR.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -13,8 +14,12 @@ public class Selskap {
     private String name;
     private int nmr;
 
-    @OneToMany(mappedBy = "Selskap")
-    private Set<BoatParking> boatParking;
+    @OneToMany
+    @JoinColumn(name = "selskap_id")
+    private Set<BoatParking> boatParking = new HashSet<>();
+
+    @OneToMany
+    private Set<Kunde> kunde;
 
     public Selskap() {
     }
@@ -23,6 +28,16 @@ public class Selskap {
         this.id = id;
         this.name = name;
         this.nmr = nmr;
+    }
+
+
+
+    public Set<Kunde> getKunde() {
+        return kunde;
+    }
+
+    public void setKunde(Set<Kunde> kunde) {
+        this.kunde = kunde;
     }
 
     public Set<BoatParking> getBoatParking() {

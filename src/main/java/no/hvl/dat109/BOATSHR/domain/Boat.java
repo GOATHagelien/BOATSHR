@@ -31,7 +31,6 @@ public class Boat {
         this.maxCapacity = maxCapacity;
         this.engineType = engineType;
         this.engineFuel = engineFuel;
-        this.boatParking = boatParking;
     }
 
     public Long getId() {

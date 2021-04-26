@@ -1,17 +1,23 @@
 package no.hvl.dat109.BOATSHR.domain;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class BoatParking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private Long id;
 
+    @NotNull
     private String locationName;
+
+    @NotNull
     private String locationAddress;
+
     private double locationGps;
     private int availableParking;
 
@@ -22,19 +28,18 @@ public class BoatParking {
     private Set<Selskap> selskaper;
 
 
-    @OneToMany(mappedBy = "BoatParking")
+    @OneToMany
+    @JoinColumn(name = "BoatParking_id")
     private Set<Boat> boats;
 
     public BoatParking() {
     }
 
-    public BoatParking(String locationName, String locationAddress, double locationGps, int availableParking, Set<Selskap> selskaper, Set<Boat> boats) {
+    public BoatParking(String locationName, String locationAddress, double locationGps, int availableParking) {
         this.locationName = locationName;
         this.locationAddress = locationAddress;
         this.locationGps = locationGps;
         this.availableParking = availableParking;
-        this.selskaper = selskaper;
-        this.boats = boats;
     }
 
     public Set<Selskap> getSelskap() {
