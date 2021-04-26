@@ -1,17 +1,44 @@
 package no.hvl.dat109.BOATSHR.domain;
 
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
 public class Selskap {
-    String name;
-    Int nmr;
-    String address;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String name;
+    private int nmr;
+
+    @OneToMany(mappedBy = "Selskap")
+    private Set<BoatParking> boatParking;
 
     public Selskap() {
     }
 
-    public Selskap(String name, Int nmr, String address) {
+    public Selskap(Long id, String name, int nmr) {
+        this.id = id;
         this.name = name;
         this.nmr = nmr;
-        this.address = address;
+    }
+
+    public Set<BoatParking> getBoatParking() {
+        return boatParking;
+    }
+
+    public void setBoatParking(Set<BoatParking> boatParking) {
+        this.boatParking = boatParking;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -22,19 +49,26 @@ public class Selskap {
         this.name = name;
     }
 
-    public Int getNmr() {
+    public int getNmr() {
         return nmr;
     }
 
-    public void setNmr(Int nmr) {
+    public void setNmr(int nmr) {
         this.nmr = nmr;
     }
 
-    public String getAddress() {
-        return address;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Selskap selskap = (Selskap) o;
+
+        return id != null ? id.equals(selskap.id) : selskap.id == null;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }
