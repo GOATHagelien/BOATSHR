@@ -1,8 +1,9 @@
 package no.hvl.dat109.BOATSHR.domain;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Selskap {
@@ -14,13 +15,16 @@ public class Selskap {
     private String name;
     private int nmr;
 
+    /*
     @OneToMany
     @JoinColumn(name = "selskap_id")
     private Set<BoatParking> boatParking = new HashSet<>();
 
     @OneToMany
-    private Set<Kunde> kunde;
+    @JoinColumn(name = "kunde_id")
+    private Set<Kunde> kunde = new HashSet<>();
 
+*/
     public Selskap() {
     }
 
@@ -31,7 +35,7 @@ public class Selskap {
     }
 
 
-
+/*
     public Set<Kunde> getKunde() {
         return kunde;
     }
@@ -44,9 +48,12 @@ public class Selskap {
         return boatParking;
     }
 
+
     public void setBoatParking(Set<BoatParking> boatParking) {
         this.boatParking = boatParking;
     }
+
+*/
 
     public Long getId() {
         return id;
@@ -78,7 +85,6 @@ public class Selskap {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", nmr=" + nmr +
-                ", boatParking=" + boatParking +
                 '}';
     }
 

@@ -2,8 +2,10 @@ package no.hvl.dat109.BOATSHR.domain;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Kunde {
@@ -33,11 +35,12 @@ public class Kunde {
 
 
     private int credit;
+/*
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "selskap_id")
+    private Set<Selskap> selskap = new HashSet<>();
 
-    @ManyToOne
-    @JoinTable(name = "selskap_Kunde", joinColumns = @JoinColumn(name = "kunde_id"),
-            inverseJoinColumns = @JoinColumn(name = "selskap_id"))
-    private Set<Selskap> selskap;
+*/
 
     public Kunde() {
     }
@@ -77,7 +80,7 @@ public class Kunde {
     public void setMatchingPassword(String matchingPassword) {
         this.matchingPassword = matchingPassword;
     }
-
+/*
     public Set<Selskap> getSelskap() {
         return selskap;
     }
@@ -86,6 +89,8 @@ public class Kunde {
         this.selskap = selskap;
     }
 
+
+ */
     public Long getId() {
         return id;
     }

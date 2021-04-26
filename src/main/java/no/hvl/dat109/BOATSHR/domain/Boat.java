@@ -1,7 +1,9 @@
 package no.hvl.dat109.BOATSHR.domain;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Boat {
@@ -16,11 +18,12 @@ public class Boat {
     private String engineType;
     private String engineFuel;
 
-
-    @ManyToOne
-    @JoinTable(name = "BoatParking_Boat", joinColumns = @JoinColumn(name = "Boat_id"),
-            inverseJoinColumns = @JoinColumn(name = "BoatParking_id"))
+/*
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "BoatParking_id")
     private Set<BoatParking> boatParking;
+
+*/
 
     public Boat() {
     }
@@ -40,7 +43,7 @@ public class Boat {
     public void setId(Long id) {
         this.id = id;
     }
-
+/*
     public Set<BoatParking> getBoatParking() {
         return boatParking;
     }
@@ -48,7 +51,7 @@ public class Boat {
     public void setBoatParking(Set<BoatParking> boatParking) {
         this.boatParking = boatParking;
     }
-
+*/
     public String getTypeBoat() {
         return typeBoat;
     }
@@ -98,7 +101,6 @@ public class Boat {
                 ", maxCapacity=" + maxCapacity +
                 ", engineType='" + engineType + '\'' +
                 ", engineFuel='" + engineFuel + '\'' +
-                ", boatParking=" + boatParking +
                 '}';
     }
 

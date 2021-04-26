@@ -2,8 +2,10 @@ package no.hvl.dat109.BOATSHR.domain;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class BoatParking {
@@ -22,16 +24,15 @@ public class BoatParking {
     private int availableParking;
 
 
-    @ManyToOne
-    @JoinTable(name = "selskap_boatparking", joinColumns = @JoinColumn(name = "boatparking_id"),
-            inverseJoinColumns = @JoinColumn(name = "selskap_id"))
-    private Set<Selskap> selskaper;
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "selskap_id")
+    private Selskap selskap;
 
 
     @OneToMany
     @JoinColumn(name = "BoatParking_id")
-    private Set<Boat> boats;
-
+    private Set<Boat> boats = new HashSet<>();
+*/
     public BoatParking() {
     }
 
@@ -42,13 +43,6 @@ public class BoatParking {
         this.availableParking = availableParking;
     }
 
-    public Set<Selskap> getSelskap() {
-        return selskaper;
-    }
-
-    public void setSelskap(Set<Selskap> selskap) {
-        this.selskaper = selskap;
-    }
 
     public String getLocationName() {
         return locationName;
@@ -82,14 +76,14 @@ public class BoatParking {
         this.availableParking = availableParking;
     }
 
-    public Set<Boat> getBoats() {
+    /*public Set<Boat> getBoats() {
         return boats;
     }
 
     public void setBoats(Set<Boat> boats) {
         this.boats = boats;
     }
-
+*/
     @Override
     public String toString() {
         return "BoatParking{" +
@@ -98,8 +92,6 @@ public class BoatParking {
                 ", locationAddress='" + locationAddress + '\'' +
                 ", locationGps=" + locationGps +
                 ", availableParking=" + availableParking +
-                ", selskaper=" + selskaper +
-                ", boats=" + boats +
                 '}';
     }
 
