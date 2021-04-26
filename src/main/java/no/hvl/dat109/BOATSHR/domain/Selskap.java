@@ -14,6 +14,7 @@ public class Selskap {
 
     private String name;
     private int nmr;
+    private String sAddress;
 
     /*
     @OneToMany
@@ -28,10 +29,11 @@ public class Selskap {
     public Selskap() {
     }
 
-    public Selskap(Long id, String name, int nmr) {
+    public Selskap(Long id, String name, int nmr, String sAddress) {
         this.id = id;
         this.name = name;
         this.nmr = nmr;
+        this.sAddress = sAddress;
     }
 
 
@@ -54,6 +56,15 @@ public class Selskap {
     }
 
 */
+
+
+    public String getsAddress() {
+        return sAddress;
+    }
+
+    public void setsAddress(String sAddress) {
+        this.sAddress = sAddress;
+    }
 
     public Long getId() {
         return id;
@@ -85,6 +96,7 @@ public class Selskap {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", nmr=" + nmr +
+                ", sAddress='" + sAddress + '\'' +
                 '}';
     }
 
@@ -95,11 +107,18 @@ public class Selskap {
 
         Selskap selskap = (Selskap) o;
 
-        return id != null ? id.equals(selskap.id) : selskap.id == null;
+        if (nmr != selskap.nmr) return false;
+        if (id != null ? !id.equals(selskap.id) : selskap.id != null) return false;
+        if (name != null ? !name.equals(selskap.name) : selskap.name != null) return false;
+        return sAddress != null ? sAddress.equals(selskap.sAddress) : selskap.sAddress == null;
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + nmr;
+        result = 31 * result + (sAddress != null ? sAddress.hashCode() : 0);
+        return result;
     }
 }
